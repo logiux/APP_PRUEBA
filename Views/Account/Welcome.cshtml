@@ -1,0 +1,36 @@
+﻿<link rel="stylesheet" href="~/css/login.css" />
+<div class="login-container">
+
+    <div class="card">
+<h1>Bienvenido al sistema</h1>
+
+        @if (ViewBag.Usuario != null)
+        {
+            <h3>Usuario: @ViewBag.Usuario</h3>
+        }
+
+<p>Inicio de sesión correcto.</p>
+
+        <p>Perrito del día</p>
+
+        @if (!string.IsNullOrWhiteSpace(ViewBag.ImagenPerrito as string))
+        {
+            <img src="@ViewBag.ImagenPerrito"
+                 alt="Perrito del día"
+                 style="max-width:400px; border-radius:12px;" />
+        }
+        else
+        {
+            <p>@ViewBag.MensajePerrito</p>
+        }
+
+        <br />
+        <br />
+
+
+<a href="/Account/Login">
+    Cerrar sesión
+</a>
+    </div>
+
+</div>

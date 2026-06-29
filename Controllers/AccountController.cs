@@ -6,10 +6,13 @@ namespace APP_PRUEBA.Controllers
     public class AccountController : Controller
     {
         private readonly AuthService _authService;
-
-        public AccountController(AuthService authService)
+        private readonly DogWcfClientService _dogService;
+        public AccountController(
+            AuthService authService,
+            DogWcfClientService dogService)
         {
             _authService = authService;
+            _dogService = dogService;
         }
 
         [HttpGet]
@@ -30,13 +33,23 @@ namespace APP_PRUEBA.Controllers
                     model.Password);
 
             if (valido)
+            {
+                TempData["Usuario"] = model.Usuario;
                 return RedirectToAction("Welcome");
+            }
 
             return RedirectToAction("Error");
         }
 
-        public IActionResult Welcome()
+        public async Task<IActionResult> Welcome()
         {
+            ViewBag.Usuario = TempData["Usuario"];
+
+            var dogModel = await _dogService.ObtenerPerritoDelDia();
+
+            ViewBag.ImagenPerrito = dogModel.ImagenUrl;
+            ViewBag.MensajePerrito = dogModel.Mensaje;
+
             return View();
         }
 

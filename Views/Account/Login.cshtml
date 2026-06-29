@@ -1,0 +1,53 @@
+﻿@model APP_PRUEBA.Models.LoginViewModel
+
+<link rel="stylesheet" href="~/css/login.css" />
+
+
+<div class="login-container">
+
+    <div class="card">
+
+        <h2>Bienvenido!</h2>
+
+        <p>Inserta tu usuario y password</p>
+
+
+        <form method="post" id="loginForm">
+
+
+            <div class="form-group">
+
+                <input type="text"
+                       name="Usuario"
+                       id="usuario"
+                       placeholder="Usuario" />
+
+            </div>
+
+
+
+            <div class="form-group">
+
+                <input type="password"
+                       name="Password"
+                       id="password"
+                       placeholder="Password" />
+
+            </div>
+
+
+
+            <button type="submit">
+                Login
+            </button>
+
+
+        </form>
+
+
+    </div>
+
+</div>
+
+
+<script src="~/js/login.js"></script>
