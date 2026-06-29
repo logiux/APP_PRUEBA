@@ -21,7 +21,7 @@ namespace APP_PRUEBA.Services
             string sql =
                 @"SELECT COUNT(*)
                   FROM tbl_usuarios
-                  WHERE user=@usr
+                  WHERE user_name=@usr
                   AND password=@pwd";
 
             using var cmd = new MySqlCommand(sql, conn);
